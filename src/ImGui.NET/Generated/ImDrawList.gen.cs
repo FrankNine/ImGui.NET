@@ -87,9 +87,9 @@ namespace ImGuiNET
         }
         public void _SetDrawListSharedData(ref IntPtr data)
         {
-            fixed (IntPtr native_data = &data)
+            fixed (IntPtr* native_data = &data)
             {
-                ImGuiNative.ImDrawList__SetDrawListSharedData((ImDrawList*)(NativePtr), native_data);
+                ImGuiNative.ImDrawList__SetDrawListSharedData((ImDrawList*)(NativePtr), *native_data);
             }
         }
         public void _SetTexture(ImTextureRef tex_ref)
