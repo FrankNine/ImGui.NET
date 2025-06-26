@@ -30,7 +30,7 @@ namespace ImGuiNET
         public ushort EllipsisChar;
         public ImFontFlags Flags;
         public ImFont* DstFont;
-        public ImFontLoader* FontLoader;
+        public IntPtr* FontLoader;
         public void* FontLoaderData;
     }
     public unsafe partial struct ImFontConfigPtr
@@ -64,7 +64,7 @@ namespace ImGuiNET
         public ref ushort EllipsisChar => ref Unsafe.AsRef<ushort>(&NativePtr->EllipsisChar);
         public ref ImFontFlags Flags => ref Unsafe.AsRef<ImFontFlags>(&NativePtr->Flags);
         public ImFontPtr DstFont => new ImFontPtr(NativePtr->DstFont);
-        public ImFontLoaderPtr FontLoader => new ImFontLoaderPtr(NativePtr->FontLoader);
+        public IntPtr FontLoader { get => (IntPtr)NativePtr->FontLoader; set => NativePtr->FontLoader = (IntPtr*)value; }
         public IntPtr FontLoaderData { get => (IntPtr)NativePtr->FontLoaderData; set => NativePtr->FontLoaderData = (void*)value; }
         public void Destroy()
         {

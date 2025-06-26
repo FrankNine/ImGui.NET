@@ -28672,16 +28672,10 @@ namespace ImGuiNET
             }
             return ret != 0;
         }
-        public static bool DebugEditFontLoaderFlags(ImGuiFreeTypeLoaderFlagsPtr p_font_loader_flags)
+        public static IntPtr* GetFontLoader()
         {
-            ImGuiFreeTypeLoaderFlags* native_p_font_loader_flags = p_font_loader_flags.NativePtr;
-            byte ret = ImGuiNative.ImGuiFreeType_DebugEditFontLoaderFlags(native_p_font_loader_flags);
-            return ret != 0;
-        }
-        public static ImFontLoaderPtr GetFontLoader()
-        {
-            ImFontLoader* ret = ImGuiNative.ImGuiFreeType_GetFontLoader();
-            return new ImFontLoaderPtr(ret);
+            IntPtr* ret = ImGuiNative.ImGuiFreeType_GetFontLoader();
+            return ret;
         }
     }
 }
